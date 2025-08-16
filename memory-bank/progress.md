@@ -36,3 +36,10 @@
 -   **Spring Kafka:** Decided to use Spring Kafka for simplified Kafka integration within the Spring Boot application.
 -   **Kafka UI:** Decided to use Kafka UI for monitoring and managing Kafka topics and messages.
 -   **Port 8080 conflict:** Resolved the port conflict by changing the port of Kafka UI to 8082.
+
+## Todo
+
+- [x] Cấu hình `application.properties`
+- [x] Tạo `KafkaProducerService`
+- [x] Tạo `KafkaController`
+- [x] Kiểm tra cấu hình

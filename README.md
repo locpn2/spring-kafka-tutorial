@@ -29,6 +29,18 @@ This project is created to provide an overview of Apache Kafka, the benefits of 
         ```
         (Remember to change the port if your Spring Boot application is running on a different port)
 
+        To send a message, use the following curl command:
+        ```bash
+        curl -X POST "http://localhost:8080/kafka/publish?message=YourMessage"
+        ```
+        (Replace `YourMessage` with the message you want to send)
+
+    *   The file `src/main/resources/application.properties` has been configured with serializers:
+        ```properties
+        spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+        spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+        ```
+
 ## Instructions for running the project:
 
 1.  **Start Kafka using Docker Compose:**

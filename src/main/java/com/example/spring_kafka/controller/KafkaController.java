@@ -18,8 +18,8 @@ public class KafkaController {
     }
 
     @PostMapping("/publish")
-    public String sendMessageToKafkaTopic(@RequestParam("message") String message) {
-        kafkaProducerService.sendMessage("my-topic", message);
-        return "Message sent to Kafka topic successfully!";
+    public String sendMessage(@RequestParam("message") String message) {
+        kafkaProducerService.sendMessage(message);
+        return "Message sent to Kafka!";
     }
 }
