@@ -43,3 +43,6 @@
 - [x] Tạo `KafkaProducerService`
 - [x] Tạo `KafkaController`
 - [x] Kiểm tra cấu hình
+- [x] Create tag Lesson-2
+- [x] Cấu hình `key-deserializer` và `value-deserializer` cho consumer trong `application.properties`
+- [x] Kiểm tra hoạt động của Consumer

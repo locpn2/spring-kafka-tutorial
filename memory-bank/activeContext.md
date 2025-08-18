@@ -20,6 +20,8 @@ Hiện tại, chúng ta đang tập trung vào việc hoàn thiện các bước
     *   Tạo `progress.md` để theo dõi tiến độ và các vấn đề đã biết.
 2.  **Kiểm tra lại toàn bộ dự án:** Sau khi hoàn thiện tài liệu, sẽ kiểm tra lại toàn bộ dự án để đảm bảo mọi thứ hoạt động đúng như mong đợi.
 3.  **Chuẩn bị cho phiên hội thoại tiếp theo:** Sẵn sàng cho các chủ đề nâng cao hơn về Kafka và Spring Boot.
+    *   Hoàn thành cấu hình và kiểm tra Kafka Consumer.
+    *   Cập nhật Memory Bank để phản ánh các thay đổi.
 
 ## Important Patterns and Preferences
 

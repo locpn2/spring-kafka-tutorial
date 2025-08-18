@@ -41,6 +41,13 @@ This project is created to provide an overview of Apache Kafka, the benefits of 
         spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
         ```
 
+5.  **Configure Kafka Consumer:**
+    *   The file `src/main/resources/application.properties` has been configured with deserializers:
+        ```properties
+        spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+        spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+        ```
+
 ## Instructions for running the project:
 
 1.  **Start Kafka using Docker Compose:**
