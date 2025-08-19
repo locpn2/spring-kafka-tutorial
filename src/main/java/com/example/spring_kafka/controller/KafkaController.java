@@ -31,4 +31,22 @@ public class KafkaController {
         kafkaProducerService.sendMessage(message);
         return "Message sent to Kafka topic retry-topic";
     }
+
+    @PostMapping("/kafka/publishManual")
+    public String sendMessageToManualCommitTopic(@RequestParam("message") String message) {
+        kafkaProducerService.sendMessage(message);
+        return "Message sent to Kafka topic offset-topic for manual commit";
+    }
+
+    @PostMapping("/kafka/publishManualError")
+    public String sendMessageToManualErrorTopic(@RequestParam("message") String message) {
+        kafkaProducerService.sendMessage(message);
+        return "Message sent to Kafka topic error-topic for manual commit";
+    }
+
+    @PostMapping("/kafka/publishManualRetry")
+    public String sendMessageToManualRetryTopic(@RequestParam("message") String message) {
+        kafkaProducerService.sendMessage(message);
+        return "Message sent to Kafka topic retry-topic for manual commit";
+    }
 }

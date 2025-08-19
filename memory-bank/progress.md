@@ -12,10 +12,21 @@
 -   **Auto-commit implementation:** Implemented auto-commit strategy for offset management.
 -   **ConsumerAwareListenerErrorHandler:** Implemented `ConsumerAwareListenerErrorHandler` for handling exceptions.
 -   **SeekToCurrentErrorHandler:** Implemented `SeekToCurrentErrorHandler` for retrying failed messages.
+-   **Manual commit implementation:** Implemented manual commit strategy for offset management.
+-   **Manual ConsumerAwareListenerErrorHandler:** Implemented `ConsumerAwareListenerErrorHandler` for handling exceptions with manual commit.
+-   **Manual SeekToCurrentErrorHandler:** Implemented `SeekToCurrentErrorHandler` for retrying failed messages with manual commit.
+-   **Completed:** Đã hoàn thành các demo cho các tính năng sau:
+    - Các chiến lược quản lý offset (Auto-commit và Manual commit).
+    - Hướng dẫn sử dụng `ConsumerAwareListenerErrorHandler` để xử lý exception trong quá trình consumption.
+    - Giải thích cách sử dụng `SeekToCurrentErrorHandler` để retry các message bị lỗi.
+-   **Updated Memory Bank:** Đã cập nhật Memory Bank.
+-   **Updated README.md:** Đã cập nhật README.md.
+-   **Committed Project:** Đã commit project.
+-   **Created tag "Lesson-4a":** Đã tạo tag "Lesson-4a".
+-   **Created tag "Lesson-4b":** Đã tạo tag "Lesson-4b".
 
 ## What's left to build
 
--   **Manual commit implementation:** Implement manual commit strategy for offset management.
 -   **Kafka Streams and Kafka Connect:** Explore Kafka Streams for stream processing and Kafka Connect for integrating with other data sources.
 -   **Security:** Implement security configurations for Kafka.
 -   **Performance optimization:** Optimize Kafka performance by tuning various configuration parameters.
@@ -29,8 +40,13 @@
 -   **Completed:** Implemented auto-commit strategy for offset management.
 -   **Completed:** Implemented `ConsumerAwareListenerErrorHandler` for handling exceptions.
 -   **Completed:** Implemented `SeekToCurrentErrorHandler` for retrying failed messages.
--   **In progress:** Setting up Memory Bank.
--   **Pending:** Implementing advanced features and optimizations.
+-   **Completed:** Implemented manual commit strategy for offset management.
+-   **Completed:** Implemented `ConsumerAwareListenerErrorHandler` for handling exceptions with manual commit.
+-   **Completed:** Implemented `SeekToCurrentErrorHandler` for retrying failed messages with manual commit.
+-   **Completed:** Đã hoàn thành các demo cho các tính năng sau:
+    - Các chiến lược quản lý offset (Auto-commit và Manual commit).
+    - Hướng dẫn sử dụng `ConsumerAwareListenerErrorHandler` để xử lý exception trong quá trình consumption.
+    - Giải thích cách sử dụng `SeekToCurrentErrorHandler` để retry các message bị lỗi.
 
 ## Known issues
 
@@ -63,14 +79,14 @@
 - [x] Implement Offset Management Strategies Demo (Auto-commit)
 - [x] Implement ConsumerAwareListenerErrorHandler Demo (Auto-commit)
 - [x] Implement SeekToCurrentErrorHandler Demo (Auto-commit)
-- [ ] Update Memory Bank (Auto-commit)
-- [ ] Update README.md (Auto-commit)
-- [ ] Commit Project (Auto-commit)
-- [ ] Create tag "Lesson-4a"
-- [ ] Implement Offset Management Strategies Demo (Manual commit)
-- [ ] Implement ConsumerAwareListenerErrorHandler Demo (Manual commit)
-- [ ] Implement SeekToCurrentErrorHandler Demo (Manual commit)
-- [ ] Update Memory Bank (Manual commit)
-- [ ] Update README.md (Manual commit)
-- [ ] Commit Project (Manual commit)
-- [ ] Create tag "Lesson-4b"
+- [x] Update Memory Bank (Auto-commit)
+- [x] Update README.md (Auto-commit)
+- [x] Commit Project (Auto-commit)
+- [x] Create tag "Lesson-4a"
+- [x] Implement Offset Management Strategies Demo (Manual commit)
+- [x] Implement ConsumerAwareListenerErrorHandler Demo (Manual commit)
+- [x] Implement SeekToCurrentErrorHandler Demo (Manual commit)
+- [x] Update Memory Bank (Manual commit)
+- [x] Update README.md (Manual commit)
+- [x] Commit Project (Manual commit)
+- [x] Create tag "Lesson-4b"

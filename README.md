@@ -137,3 +137,75 @@ public void retryListener(String message) {
     System.out.println("Received: " + message);
 }
 ```
+
+## Implemented Demos (Manual commit)
+
+### Offset Management (Manual commit)
+
+- Configured `enable.auto.commit=false` in `application.properties`:
+
+```properties
+spring.kafka.consumer.enable-auto-commit=false
+```
+
+- Implemented a `@KafkaListener` that uses `Acknowledgment.acknowledge()` to commit offsets:
+
+```java
+import org.springframework.kafka.support.Acknowledgment;
+
+@KafkaListener(topics = "offset-topic", groupId = "manual-commit-group")
+public void manualCommitListener(String message, Acknowledgment acknowledgment) {
+    System.out.println("Manual-commit listener received: " + message);
+    acknowledgment.acknowledge();
+}
+```
+
+### ConsumerAwareListenerErrorHandler
+
+- Implemented a `ConsumerAwareListenerErrorHandler` bean in `KafkaConfig.java`:
+
+```java
+@Bean
+public ConsumerAwareListenerErrorHandler errorHandler() {
+    return (message, exception, consumer) -> {
+        System.err.println("Error handling: " + exception.getMessage());
+        return null;
+    };
+}
+```
+
+- Implemented a `@KafkaListener` that uses the error handler in `KafkaConsumerService.java`:
+
+```java
+@KafkaListener(topics = "error-topic", groupId = "manual-error-group", errorHandler = "errorHandler")
+public void errorListener(String message) {
+    if (message.contains("error")) {
+        throw new RuntimeException("Simulated error");
+    }
+    System.out.println("Received: " + message);
+}
+```
+
+### SeekToCurrentErrorHandler
+
+- Implemented a `SeekToCurrentErrorHandler` bean in `KafkaConfig.java`:
+
+```java
+@Bean
+public SeekToCurrentErrorHandler retryHandler() {
+    SeekToCurrentErrorHandler handler = new SeekToCurrentErrorHandler();
+    handler.setMaxAttempts(3);
+    return handler;
+}
+```
+
+- Implemented a `@KafkaListener` that uses the retry handler in `KafkaConsumerService.java`:
+
+```java
+@KafkaListener(topics = "retry-topic", groupId = "manual-retry-group", errorHandler = "retryHandler")
+public void retryListener(String message) {
+    if (message.contains("error")) {
+        throw new RuntimeException("Simulated error");
+    }
+    System.out.println("Received: " + message);
+}

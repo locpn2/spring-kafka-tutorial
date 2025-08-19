@@ -3,7 +3,6 @@ package com.example.spring_kafka.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.listener.ConsumerAwareListenerErrorHandler;
-import org.springframework.kafka.listener.SeekToCurrentErrorHandler;
 
 @Configuration
 public class KafkaConfig {
@@ -17,9 +16,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public SeekToCurrentErrorHandler retryHandler() {
-        SeekToCurrentErrorHandler handler = new SeekToCurrentErrorHandler();
-        handler.setMaxAttempts(3);
-        return handler;
+    public com.example.spring_kafka.config.CustomKafkaListenerErrorHandler retryHandler() {
+        return new com.example.spring_kafka.config.CustomKafkaListenerErrorHandler();
     }
 }
