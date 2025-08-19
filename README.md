@@ -66,3 +66,74 @@ This project is created to provide an overview of Apache Kafka, the benefits of 
 ## Next sessions:
 
 In the following sessions, we will delve into each aspect of Kafka and how to optimize the use of Kafka in Spring Boot projects.
+
+## Implemented Demos (Auto-commit)
+
+### Offset Management (Auto-commit)
+
+- Configured `enable.auto.commit=true` and `auto.commit.interval.ms` in `application.properties`:
+
+```properties
+spring.kafka.consumer.enable-auto-commit=true
+spring.kafka.consumer.auto-commit-interval=1000
+```
+
+- Implemented a `@KafkaListener` to consume messages:
+
+```java
+@KafkaListener(topics = "offset-topic", groupId = "auto-commit-group")
+public void autoCommitListener(String message) {
+    System.out.println("Auto-commit listener received: " + message);
+}
+```
+
+### ConsumerAwareListenerErrorHandler
+
+- Implemented a `ConsumerAwareListenerErrorHandler` bean in `KafkaConfig.java`:
+
+```java
+@Bean
+public ConsumerAwareListenerErrorHandler errorHandler() {
+    return (message, exception, consumer) -> {
+        System.err.println("Error handling: " + exception.getMessage());
+        return null;
+    };
+}
+```
+
+- Implemented a `@KafkaListener` that uses the error handler in `KafkaConsumerService.java`:
+
+```java
+@KafkaListener(topics = "error-topic", groupId = "error-group", errorHandler = "errorHandler")
+public void errorListener(String message) {
+    if (message.contains("error")) {
+        throw new RuntimeException("Simulated error");
+    }
+    System.out.println("Received: " + message);
+}
+```
+
+### SeekToCurrentErrorHandler
+
+- Implemented a `SeekToCurrentErrorHandler` bean in `KafkaConfig.java`:
+
+```java
+@Bean
+public SeekToCurrentErrorHandler retryHandler() {
+    SeekToCurrentErrorHandler handler = new SeekToCurrentErrorHandler();
+    handler.setMaxAttempts(3);
+    return handler;
+}
+```
+
+- Implemented a `@KafkaListener` that uses the retry handler in `KafkaConsumerService.java`:
+
+```java
+@KafkaListener(topics = "retry-topic", groupId = "retry-group", errorHandler = "retryHandler")
+public void retryListener(String message) {
+    if (message.contains("error")) {
+        throw new RuntimeException("Simulated error");
+    }
+    System.out.println("Received: " + message);
+}
+```

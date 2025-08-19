@@ -6,8 +6,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaConsumerService {
 
-    @KafkaListener(topics = "my-topic", groupId = "my-group-id")
-    public void listen(String message) {
-        System.out.println("Received Message in group my-group-id: " + message);
+    @KafkaListener(topics = "offset-topic", groupId = "auto-commit-group")
+    public void autoCommitListener(String message) {
+        System.out.println("Auto-commit listener received: " + message);
+    }
+
+    @KafkaListener(topics = "error-topic", groupId = "error-group", errorHandler = "errorHandler")
+    public void errorListener(String message) {
+        if (message.contains("error")) {
+            throw new RuntimeException("Simulated error");
+        }
+        System.out.println("Received: " + message);
+    }
+
+    @KafkaListener(topics = "retry-topic", groupId = "retry-group", errorHandler = "retryHandler")
+    public void retryListener(String message) {
+        if (message.contains("error")) {
+            throw new RuntimeException("Simulated error");
+        }
+        System.out.println("Received: " + message);
     }
 }

@@ -9,8 +9,24 @@ import org.springframework.kafka.config.TopicBuilder;
 public class KafkaTopicConfig {
 
     @Bean
-    public NewTopic myTopic() {
-        return TopicBuilder.name("my-topic")
+    public NewTopic offsetTopic() {
+        return TopicBuilder.name("offset-topic")
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic errorTopic() {
+        return TopicBuilder.name("error-topic")
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic retryTopic() {
+        return TopicBuilder.name("retry-topic")
                 .partitions(1)
                 .replicas(1)
                 .build();
